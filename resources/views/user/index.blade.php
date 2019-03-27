@@ -27,7 +27,7 @@
 				<th>NOME</th>
 				<th>TELEFONE</th>
 				<th>IDADE</th>
-				<th>GENERO</th>
+				<th>GENERO         </th>
 				<th>EMAIL</th>
 				<th>STATUS</th>
 			</tr>
