@@ -10,7 +10,6 @@
 	@else
 		<h3>{{session('sucess')['message']}}</h3>
 	@endif
-
     {!! Form::open(['route'=>'user.store','method'=>'post','class'=>'form-padrao']) !!}
         @include('templates.formulario.input',['label'=>'CPF','input'=>'cpf','attributes'=>['placeholder'=>'CPF']])
         @include('templates.formulario.input',['label'=>'NOME','input'=>'nome','attributes'=>['placeholder'=>'nome']])
