@@ -41,5 +41,26 @@ class UserServices{
         }
     }
     public function update(){}
-    public function delete(){}
+    public function destroy($user_id)
+    {
+        try
+        {
+            
+
+            $usuario = $this->repository->delete($user_id);
+
+             session()->flash('sucess',[
+            'sucess'    => $request['sucess'],
+            'message'   => $request['message']
+
+        ]);
+        }
+        catch (\Exception $e)
+        {
+            return [
+                'sucess' => false,
+                'message' => "Erro no cadastro",
+            ];
+        }
+    }
 }
