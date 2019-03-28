@@ -11,9 +11,12 @@ class InstituitionCreateRequest extends FormRequest
      *
      * @return bool
      */
+/**
+ * função responsavel por autorizar gravação de dados no banco 
+ */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

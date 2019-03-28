@@ -16,7 +16,7 @@ class Instituition extends Model implements Transformable
     use TransformableTrait;
 
 
-    protected $fillable = ['name'];
+    protected $fillable = ['nome'];
     public $timestamps = true;
 
 }
