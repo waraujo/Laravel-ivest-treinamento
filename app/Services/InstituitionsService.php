@@ -6,9 +6,7 @@ use Prettus\Validator\Contracts\ValidatorInterface;
 use App\Repositories\InstituitionRepository;
 use App\Validators\InstituitionValidator;
 
-/**
- * 
- */
+
 class InstituitionsService 
 {
 	private $repository;
@@ -49,7 +47,7 @@ class InstituitionsService
  */
             return [
                 'sucess' => false,
-                'message' => "Erro no cadastro",
+                'message' => $e->getMessage(),
             ];
         }
 	}
