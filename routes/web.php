@@ -25,3 +25,4 @@ Route::get('user',['as' =>'user.index','uses' => 'UsersController@index']);
 
 Route::resource('user','UsersController');
 Route::resource('instituiton','InstituitionsController');
+Route::resource('group','GroupsController');

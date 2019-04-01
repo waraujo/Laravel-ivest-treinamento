@@ -20,14 +20,14 @@ class Group extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [ 'nome','user_id','instituition_id'];
+    protected $fillable = ['nome','user_id','instituition_id'];
 /** funcção para criar relação com outras tabelas */
     public function owner()
     {
-    	return $this->belongTo(User::class);
+    	return $this->belongsTo(User::class,'user_id');
     }
     public function instituition()
     {
-    	return $this->belongTo(instituition::class);	
+    	return $this->belongsTo(Instituition::class);	
     }
 }

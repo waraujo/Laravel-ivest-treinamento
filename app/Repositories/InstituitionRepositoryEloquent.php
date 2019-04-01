@@ -44,5 +44,10 @@ class InstituitionRepositoryEloquent extends BaseRepository implements Instituit
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+    public function selectBoxList(string $descricao = 'nome' ,string $chave = 'id')
+    {
+        return $this->model->pluck($descricao,$chave)->all();
+    }
+
     
 }
