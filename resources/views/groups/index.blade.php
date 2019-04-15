@@ -29,7 +29,7 @@
 			<tr>
 				<td>{{ $group->id}}</td>
 				<td>{{ $group->nome}}</td>
-				<td>{{ $group->instituiton->nome}}</td>
+				<td>{{ $group->instituition->nome}}</td>
 				<td>{{ $group->owner->nome}}</td>
 				
 				<td></td>				
