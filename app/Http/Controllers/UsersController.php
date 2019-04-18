@@ -68,9 +68,7 @@ class UsersController extends Controller
 
         ]);
 
-        return view('user.index',[
-            'usuario' => $usuario,
-        ]);
+        return redirect()->route('user.index');
 
     }
 

@@ -24,8 +24,17 @@ class Group extends Model implements Transformable
 /** funcção para criar relação com outras tabelas */
     public function owner()
     {
+         /**Relacionamentos 1:N */
     	return $this->belongsTo(User::class,'user_id');
     }
+
+    public function users()
+    {
+        /**Relacionamentos N:N */
+        return $this->bolongsToMany(User::class,'user_groups');
+    }
+
+
     public function instituition()
     {
     	return $this->belongsTo(Instituition::class);	

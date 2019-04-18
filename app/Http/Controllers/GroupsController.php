@@ -82,6 +82,17 @@ class GroupsController extends Controller
         return redirect()->route('group.index');
     }
 
+    public function userStore(Request $request, $group_id)
+    {
+       $request = $this->service->userStore($group_id,$request->all());
+
+       session()->flash('sucess',[
+           'sucess'    => $request['sucess'],
+           'message'   => $request['message']
+       ]);
+        return redirect()->route('group.show',[$group_id]); 
+    }
+
     /**
      * Display the specified resource.
      *
@@ -92,15 +103,13 @@ class GroupsController extends Controller
     public function show($id)
     {
         $group = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $group,
-            ]);
-        }
-
-        return view('groups.show', compact('group'));
+        $user_list = $this->userRepository->selectBoxList();
+        
+        return view('groups.show',[
+            'group'     => $group,
+            'user_list' => $user_list
+        ]);
+        
     }
 
     /**
@@ -162,15 +171,11 @@ class GroupsController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
+
      */
     public function destroy($id)
     {
         $deleted = $this->repository->delete($id);
-        return redirect()->route('instituiton.index');
+        return redirect()->route('group.index');
     }
 }

@@ -14,29 +14,6 @@
 @include('templates.formulario.submit',['input'=>'cadastrar'])
 {!! Form::close()!!}
 
-<table class="dafault-table">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>Nome do grupo</th>
-			<th>Instituição</th>
-			<th>Nome do Responsavel</th>
-			<th>Opções</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach ($groups as $group)
-			<tr>
-				<td>{{ $group->id}}</td>
-				<td>{{ $group->nome}}</td>
-				<td>{{ $group->instituition->nome}}</td>
-				<td>{{ $group->owner->nome}}</td>
-				
-				<td></td>				
-
-			</tr>
-		@endforeach
-	</tbody>
-</table>
+@include('groups.list',['groups_list' => $groups])
 
 @endsection

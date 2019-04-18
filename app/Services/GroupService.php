@@ -16,7 +16,32 @@ class GroupService
 
 		$this->repository = $repository;
 		$this->validator  = $validator;
-	}
+    }
+    
+    public function userStore($group_id,$data)
+    {
+        try
+        {
+            $group = $this->repository->find($group_id);
+            dd($group->users);
+            return [
+                'sucess' => true,
+                'message' => "Usuário relacionado com sucesso",
+                'data' => null,
+            ];
+        }
+        catch (\Exception $e)
+        {
+            switch (get_class($e))
+            {
+                case QueryException::class     : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+                case ValidatorException::class : return [ 'sucess' => false, 'message' =>  $e->getMessageBag()];
+                case Exception::class          : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+                default                        : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+            }
+        }
+    }
+
 	public function store($data)
 	{
 		try
@@ -43,11 +68,13 @@ class GroupService
         {
 /**
  * caso ele não grave os dadso no banco ele retrona uma mensagem de erro.
- */
-            return [
-                'sucess' => false,
-                'message' => $e->getMessage(),
-            ];
+ */         switch (get_class($e))
+            {
+                case QueryException::class     : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+                case ValidatorException::class : return [ 'sucess' => false, 'message' =>  $e->getMessageBag()];
+                case Exception::class          : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+                default                        : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+            }
         }
 	}
 }

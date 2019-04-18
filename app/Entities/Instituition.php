@@ -19,4 +19,13 @@ class Instituition extends Model implements Transformable
     protected $fillable = ['nome'];
     public $timestamps = true;
 
+    public function groups()
+    {
+    	/**
+    	 * comando para retornar valores da classe grupo que tenha relação com a instituição no modem 1:N
+    	 * onde 1 grupo tenha uma instituição porém uma intituição podera ter varios grupos.
+    	 */
+    	return $this->hasMany(Group::class);
+    }
+
 }

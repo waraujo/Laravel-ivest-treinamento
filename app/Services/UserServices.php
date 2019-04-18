@@ -25,7 +25,7 @@ class UserServices{
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 
             $usuario = $this->repository->create($data);
-
+            dd($usuario);
             return [
                 'sucess' => true,
                 'message' => "Usuário cadastrado",
@@ -34,11 +34,15 @@ class UserServices{
         }
         catch (\Exception $e)
         {
-            return [
-                'sucess' => false,
-                'message' => "Erro no cadastro",
-            ];
+            switch (get_class($e))
+            {
+                case QueryException::class     : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+                case ValidatorException::class : return [ 'sucess' => false, 'message' =>  $e->getMessageBag()];
+                case Exception::class          : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+                default                        : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+            }
         }
+        
     }
     public function update(){}
     public function destroy($user_id)
@@ -57,10 +61,13 @@ class UserServices{
         }
         catch (\Exception $e)
         {
-            return [
-                'sucess' => false,
-                'message' => "Erro no cadastro",
-            ];
+            switch (get_class($e))
+            {
+                case QueryException::class     : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+                case ValidatorException::class : return [ 'sucess' => false, 'message' =>  $e->getMessageBag()];
+                case Exception::class          : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+                default                        : return [ 'sucess' => false, 'message' =>  $e->getMessage()];
+            }
         }
     }
 }

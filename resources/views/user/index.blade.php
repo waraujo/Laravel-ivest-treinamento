@@ -48,10 +48,10 @@
 		@foreach($users as $user)
 			<tr>
 				<td>{{$user->id}}</td>
-				<td>{{$user->cpf}}</td>
+				<td>{{$user->Formatted_cpf}}</td>
 				<td>{{$user->nome}}</td>
-				<td>{{$user->phone}}</td>
-				<td>{{$user->birth}}</td>
+				<td>{{$user->Formatted_phone}}</td>
+				<td>{{$user->Formatted_birth}}</td>
 				<td>{{$user->gender}}</td>
 				<td>{{$user->email}}</td>
 				<td>{{$user->status}}</td>
